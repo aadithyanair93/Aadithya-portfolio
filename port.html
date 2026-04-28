@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Aadithya Nair | Lecturer in Computer Engineering</title>
+  <!-- Google Fonts & Simple CSS Reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefefe;
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --accent: #2563eb;
+      --accent-dark: #1e3a8a;
+      --accent-soft: #dbeafe;
+      --accent-glow: rgba(37, 99, 235, 0.08);
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-700: #374151;
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-md: 0 20px 25px -12px rgba(0,0,0,0.08);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 50;
+      padding: 0.9rem 0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f2937;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent-dark);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      border: 1px solid var(--gray-200);
+      padding: 0.6rem 1.4rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #1f2a3e;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 4px 8px rgba(37,99,235,0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 3.5rem 0 4rem 0;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      padding: 0.25rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #dbeafe 0%, #dbeafe 40%, transparent 70%);
+      padding: 0 0.2rem;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin: 1.2rem 0 1.6rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .stat {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .stat-number {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #0f172a;
+    }
+
+    .hero-avatar {
+      flex: 0.7;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 0.5rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s;
+      border: 1px solid var(--gray-100);
+    }
+
+    .avatar-card img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 1.5rem;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(145deg, #eef2ff, #ffffff);
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.2rem;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title span {
+      background: var(--accent-soft);
+      padding: 0.25rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-dark);
+    }
+
+    /* Cards & Grids */
+    .cards-grid, .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .exp-card, .project-card, .edu-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.6rem;
+      transition: all 0.25s;
+      border: 1px solid var(--gray-100);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .exp-card:hover, .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-soft);
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 0;
+    }
+
+    .tag {
+      background: var(--gray-100);
+      padding: 0.2rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #1f3a5f;
+    }
+
+    /* Skills styling */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .skill-badge {
+      background: var(--accent-soft);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+    }
+
+    .publication-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .pub-item {
+      background: var(--gray-50);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Contact row */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      gap: 1.5rem;
+    }
+
+    .contact-info a {
+      text-decoration: none;
+      color: var(--accent-dark);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #6c757d;
+      font-size: 0.85rem;
+      background: var(--gray-50);
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .hero-stats {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-content">
+    <div class="logo">Aadithya Nair</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-chalkboard-teacher" style="margin-right: 6px;"></i> Lecturer in Computer Engineering</div>
+        <h1>Building <span class="hero-highlight">bridges</span> between academia & <span class="hero-highlight">AI innovation</span></h1>
+        <p class="hero-desc">Passionate lecturer with 1+ year of experience in AI, Web Development, DBMS & Python. Gold medalist & mentor shaping future-ready engineers.</p>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-number">1+ yr</div><div>Teaching Experience</div></div>
+          <div class="stat"><div class="stat-number">1st Rank</div><div>B.E. Gold Medalist</div></div>
+          <div class="stat"><div class="stat-number">10+</div><div>Projects Mentored</div></div>
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-code-branch"></i> View Projects</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-card">
+          <!-- professional abstract avatar with initials & tech vibe -->
+          <img src="WhatsApp Image 2026-04-19 at 11.26.45 AM.jpeg" viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23eff6ff'/%3E%3Ccircle cx='200' cy='160' r='65' fill='%232563eb' opacity='0.2'/%3E%3Cpath d='M130 270 L270 270 Q290 270 290 250 L290 200 Q270 170 200 170 Q130 170 110 200 L110 250 Q110 270 130 270 Z' fill='%23bfdbfe'/%3E%3Ccircle cx='155' cy='150' r='12' fill='%231e3a8a'/%3E%3Ccircle cx='245' cy='150' r='12' fill='%231e3a8a'/%3E%3Cpath d='M175 185 Q200 205 225 185' stroke='%232563eb' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ctext x='200' y='330' text-anchor='middle' font-family='monospace' font-size='34' font-weight='bold' fill='%232563eb'%3E👨‍💻%3C/text%3E%3C/svg%3E"
+           alt="Aadithya Nair illustration">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About + Education + Summary -->
+  <div class="section" id="about">
+    <div class="container">
+      <div class="section-title">
+        About me <span>educator & engineer</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+        <p> Dedicated and passionate Lecturer with 1 year of teaching experience in Computer Engineering/Information Technology, specializing in Artificial Intelligence, Web Development, Advanced Web Development, Database Management Systems (DBMS), and Python Programming. Experienced in delivering theoretical and practical knowledge, mentoring students in academic and real-time project development, and designing hands-on assignments to strengthen problem-solving and technical skills. Proficient in Laravel, PHP, Python, MySQL, and REST API development, with strong expertise in bridging academic concepts with industry-oriented applications. Committed to fostering student growth, technical excellence, and innovative learning environments.</p>
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px,1fr));">
+          <div class="edu-card">
+            <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>M.Tech (AI & Data Science)</h3>
+            <div class="meta">Gyanmanjari Innovative University | 2025 - Pursuing</div>
+            <p>Specializing in advanced ML, deep learning & data engineering.</p>
+          </div>
+          <div class="edu-card">
+            <div class="card-icon"><i class="fas fa-trophy"></i></div>
+            <h3>B.E. Computer Engineering</h3>
+            <div class="meta">Gujarat Technological University | 2021-2025</div>
+            <p><strong>🥇 Gold Medalist – 1st Rank (CGPA: 9.26/10)</strong> · top of batch.</p>
+          </div>
+          <div class="edu-card">
+            <div class="card-icon"><i class="fas fa-school"></i></div>
+            <h3>Schooling</h3>
+            <div class="meta">12th HSC & 10th SSC | Sardar Patel Educational Institute</div>
+            <p>Academic excellence foundation with focus on mathematics & science.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Section -->
+  <div class="section" id="experience">
+    <div class="container">
+      <div class="section-title">
+        Teaching & Industry Experience <span>mentor & developer</span>
+      </div>
+      <div class="cards-grid">
+        <div class="exp-card">
+          <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Lecturer (Computer Engineering)</h3>
+          <div class="meta">Gyanmanjari Innovative University | May 2025 – Present</div>
+          <ul style="margin-left: 1.2rem; color: #2c3e50; display: flex; flex-direction: column; gap: 0.4rem;">
+            <li>📘 Delivering lectures on AI, Web Development, Advanced Web Dev, DBMS & Python.</li>
+            <li>🎓 Guided students in real-time projects using Laravel, MySQL, and Python-based AI applications.</li>
+            <li>💡 Mentored debugging, code optimization, REST APIs & MVC architecture.</li>
+            <li>📝 Designed practical assignments & mini-projects (CRUD, API development, DB design).</li>
+          </ul>
+          <div class="tag-group"><span class="tag">Laravel</span><span class="tag">AI</span><span class="tag">Web Development</span><span class="tag">Python</span><span class="tag">DBMS</span><span class="tag">Mentorship</span></div>
+        </div>
+        <div class="exp-card">
+          <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Web Developer</h3>
+          <div class="meta">Insomniacs Digital Pvt. Ltd., Bhavnagar | Jan 2025 – May 2025</div>
+          <ul style="margin-left: 1.2rem; color: #2c3e50; gap: 0.4rem; display: flex; flex-direction: column;">
+            <li>⚡ Built Laravel/PHP web apps & RESTful APIs → optimized MySQL queries (30% faster response).</li>
+            <li>🔐 Developed auth systems without external packages, AJAX CRUD operations.</li>
+            <li>🍽️ Designed restaurant management system (billing, reports, table mgmt).</li>
+            <li>📦 CMS modules & custom database architecture.</li>
+          </ul>
+          <div class="tag-group"><span class="tag">Laravel</span><span class="tag">REST API</span><span class="tag">MySQL</span><span class="tag">AJAX</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section (core) -->
+  <div class="section" id="projects">
+    <div class="container">
+      <div class="section-title">
+        Featured Projects <span>AI, Laravel, ML</span>
+      </div>
+      <div class="cards-grid">
+        <div class="project-card">
+          <div class="card-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Restaurant Management System</h3>
+          <div class="meta">Laravel + MySQL</div>
+          <p>Complete solution with table reservations, order management, KOT (Kitchen Order Ticket), invoice PDF generation, and admin dashboard with analytics.</p>
+          <div class="tag-group"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">PDF</span><span class="tag">Reports</span></div>
+        </div>
+        <div class="project-card">
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Restaurant Sales Prediction (ML)</h3>
+          <div class="meta">Machine Learning | Python</div>
+          <p>ML-based sales analysis to identify best-selling items & ordering patterns. Applied data insights for inventory planning and menu optimization, boosting business analytics.</p>
+          <div class="tag-group"><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Data Viz</span></div>
+        </div>
+        <div class="project-card">
+          <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h3>E-commerce Website (Laravel)</h3>
+          <div class="meta">Stripe Payment + Admin Panel</div>
+          <p>Full-featured clothing platform: product listings, cart system, secure Stripe payments. Admin dashboard for product/user/order management.</p>
+          <div class="tag-group"><span class="tag">Laravel</span><span class="tag">Stripe API</span><span class="tag">Bootstrap</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills & Technical Proficiencies -->
+  <div class="section" id="skills">
+    <div class="container">
+      <div class="section-title">
+        Technical Arsenal <span>languages & frameworks</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+          <h3 style="margin-bottom: 0.8rem;">💻 Programming Languages</h3>
+          <div class="skills-list">
+            <span class="skill-badge">PHP</span><span class="skill-badge">Java</span><span class="skill-badge">Python</span>
+            <span class="skill-badge">JavaScript</span><span class="skill-badge">SQL</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 0.8rem;">🌐 Web & Frameworks</h3>
+          <div class="skills-list">
+            <span class="skill-badge">Laravel</span><span class="skill-badge">AJAX</span><span class="skill-badge">jQuery</span>
+            <span class="skill-badge">Postman</span><span class="skill-badge">REST APIs</span><span class="skill-badge">MVC Architecture</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 0.8rem;">🗄️ Databases & Tools</h3>
+          <div class="skills-list">
+            <span class="skill-badge">MySQL</span><span class="skill-badge">MongoDB</span>
+            <span class="skill-badge">HTML5/CSS3</span><span class="skill-badge">Bootstrap</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 0.8rem;">🤖 AI & Core Concepts</h3>
+          <div class="skills-list">
+            <span class="skill-badge">Machine Learning</span><span class="skill-badge">Artificial Intelligence</span>
+            <span class="skill-badge">Data Analysis</span><span class="skill-badge">DBMS</span>
+            <span class="skill-badge">Authentication Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements & Awards (Gold Medal, etc) -->
+  <div class="section" id="awards">
+    <div class="container">
+      <div class="section-title">
+        Awards & Recognition <span>excellence</span>
+      </div>
+      <div class="publication-list">
+        <div class="pub-item">
+          <i class="fas fa-medal" style="color: #f59e0b; margin-right: 12px;"></i>
+          <strong>🥇 Gold Medalist</strong> – Secured 1st Rank in B.E. Computer Engineering (CGPA: 9.26/10) at Gujarat Technological University.
+        </div>
+        <div class="pub-item">
+          <i class="fas fa-chalkboard"></i>
+          <strong>Outstanding Mentor Award</strong> – Recognized for guiding student research projects in AI & Web Development.
+        </div>
+        <div class="pub-item">
+          <i class="fas fa-tachometer-alt"></i>
+          <strong>Performance Excellence</strong> – Optimized MySQL queries to improve API response time by 30% at Insomniacs Digital.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="section" id="contact">
+    <div class="container">
+      <div class="section-title">
+        Let's Connect <span>open to opportunities</span>
+      </div>
+      <div class="contact-flex">
+        <div class="contact-info">
+          <a href="mailto:aadithyanair93@gmail.com"><i class="fas fa-envelope"></i> aadithyanair93@gmail.com</a>
+          <a href="tel:+916353902136"><i class="fas fa-phone-alt"></i> +91 63539 02136</a>
+          <div><i class="fas fa-map-marker-alt"></i> Bhavnagar, Gujarat, India</div>
+          <div style="margin-top: 0.8rem;"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/aadithya-nair-26846b270">linkedin.com/in/aadithya-nair</a> &nbsp;|&nbsp; <i class="fab fa-github"></i> <a href="#">github.com/aadithyanair</a></div>
+        </div>
+        <div style="font-size: 0.9rem; background: var(--accent-soft); padding: 1rem; border-radius: 1rem;">
+          <p><i class="fas fa-graduation-cap"></i> <strong>For academic collaborations or recruitment</strong> — I'm available for inspiring sessions, curriculum design, and full-time lecturer roles.</p>
+          <p style="margin-top: 0.8rem;">📄 <strong>
+        <a href="Aadithya Nair Resume.pdf" download>Download Full CV</a></p>
+    </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Aadithya Nair — Lecturer in Computer Engineering | Gold Medalist | AI & Web Technologies Mentor</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
